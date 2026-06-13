@@ -41,7 +41,7 @@
 // Part A
 constexpr double PI = 3.14159265358979;
 constexpr double circle_radius(double r){ return PI * r * r; }
-constexpr double area_5 = circle_radius(5.0);
+constexpr double area_5 = circle_radius(5.0);3
 
 
 int main() {
