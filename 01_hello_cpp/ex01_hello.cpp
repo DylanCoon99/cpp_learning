@@ -1,3 +1,4 @@
+#include <iostream>
 // Exercise 1: Hello World
 //
 // Task: Print "Hello, C++!" to standard output, followed by a newline.
@@ -11,3 +12,8 @@
 //   Hello, C++!
 
 // YOUR CODE HERE
+
+int main() {
+	std::cout << "Hello, C++" << std::endl;
+	return 0;
+}
