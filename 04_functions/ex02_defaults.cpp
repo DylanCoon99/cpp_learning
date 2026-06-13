@@ -27,3 +27,45 @@
 //   [=======-----------------]  30%
 
 // YOUR CODE HERE
+#include <iostream>
+#include <string>
+
+
+std::string progress_bar(int percent, int width = 20, char fill = '#', char empty = '.') {
+
+	std::string progress = "[";
+
+
+	percent = percent > 100 ? 100 : (percent < 0 ? 0 : percent);
+
+	// determine how many fill chars and how many empty chars
+
+	int num_filled = static_cast<int>(static_cast<float>(percent) / 100 * width); // this line needs fixed
+
+
+	for (int i = 0; i < width; ++i) {
+		if (i <= num_filled) {
+			progress += fill;
+		} else {
+			progress += empty;
+		}
+	}
+
+	progress += "] ";
+	progress += std::to_string(percent);
+	progress += "%";
+
+	return progress;
+}
+
+
+int main() {
+
+
+	// call the progress bar function
+	std::cout << progress_bar(50) << std::endl;
+	std::cout << progress_bar(75, 30) << std::endl;
+	std::cout << progress_bar(30, 25, '=', '-') << std::endl;
+
+
+}

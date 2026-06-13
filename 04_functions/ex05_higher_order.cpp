@@ -35,3 +35,112 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex05 ex05_higher_order.cpp
 
 // YOUR CODE HERE
+#include <iostream>
+#include<vector>
+
+
+void print_info(const std::vector<int>& v) {
+
+	for (int n: v) {
+		std::cout << n << " ";
+	}
+
+	std::cout << std::endl;
+
+}
+
+
+// Part A 
+int add(int a, int b) {
+	return a + b;
+}
+
+int sub(int a, int b) {
+	return a - b;
+}
+
+int mult(int a, int b) {
+	return a * b;
+}
+
+int apply(int a, int b, int (*op)(int, int)) {
+	return op(a, b);
+} 
+
+
+
+// Part B
+
+int square(int a) {
+	return a * a;
+}
+
+int negate(int a) {
+	return a * -1;
+}
+
+void transform(std::vector<int>& v, int (*fn)(int)) {
+
+
+	for (int& n : v) {
+		n = fn(n);
+	}
+
+}
+
+
+// Part C
+using MathOp = int (*)(int, int);
+
+MathOp get_operation(char op) {
+
+	switch (op) {
+	case '+':
+		return &add;
+	case '-':
+		return &sub;
+	case '*':
+		return &mult;
+	default:
+		return (MathOp)nullptr;
+	}
+}
+
+
+
+int main() {
+
+
+	int a = 5;
+	int b = 7;
+
+	std::cout << "add: " << apply(a, b, add) << std::endl;
+	std::cout << "sub: " << apply(a, b, sub) << std::endl;
+	std::cout << "mult: " << apply(a, b, mult) << std::endl;
+
+
+	std::vector<int> v = {1, 2, 3, 4, 5};
+	print_info(v);
+	transform(v, square);
+	print_info(v);
+	transform(v, negate);
+	print_info(v);
+
+	int num1, num2;
+	char op;
+	MathOp fn;
+
+	std::cout << "Enter 2 numbers: ";
+	std::cin >> num1 >> num2;
+
+	std::cout << "Choose an operation (+, -, or *): ";
+	std::cin >> op;
+
+	fn = get_operation(op);
+
+	std::cout << "Result: " << fn(num1, num2) << std::endl;
+
+
+
+
+}
