@@ -1,0 +1,28 @@
+// Exercise 1: Type Sizes
+//
+// Task: Print the size (in bytes) of each of the following types:
+//   char, bool, short, int, long, long long, float, double,
+//   int8_t, int16_t, int32_t, int64_t, size_t
+//
+// Requirements:
+//   - #include <cstdint> for the fixed-width types
+//   - Use sizeof() for each
+//   - Format output like: "int: 4 bytes"
+//
+// Compile: g++ -std=c++20 -Wall -Wextra -o ex01 ex01_sizes.cpp
+// Example output (may vary by platform):
+//   char:      1 bytes
+//   bool:      1 bytes
+//   short:     2 bytes
+//   int:       4 bytes
+//   long:      8 bytes
+//   long long: 8 bytes
+//   float:     4 bytes
+//   double:    8 bytes
+//   int8_t:    1 bytes
+//   int16_t:   2 bytes
+//   int32_t:   4 bytes
+//   int64_t:   8 bytes
+//   size_t:    8 bytes
+
+// YOUR CODE HERE
