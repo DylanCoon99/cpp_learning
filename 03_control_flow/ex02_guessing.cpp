@@ -28,3 +28,44 @@
 //   Correct! You got it in 3 guesses.
 
 // YOUR CODE HERE
+#include <random>
+#include <iostream>
+
+
+int main() {
+
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> dist(1, 100);
+	int secret = dist(gen);
+
+	int guess;
+	int num_guesses = 0;
+
+	std::cout << "I'm thinking of a number between 1 and 100." << std::endl;
+
+
+	while (true) {
+
+		// prompt user for input
+		std::cout << "Your guess: ";
+		std::cin >> guess;
+		num_guesses += 1;
+
+		// check the users guess
+		if (guess > secret) {
+			std::cout << "Too high!" << std::endl;
+		}
+		else if (guess < secret) {
+			std::cout << "Too low!" << std::endl;
+		}
+		else {
+			std::cout << "Correct! You got it in " << num_guesses << " guesses." << std::endl;
+			break;
+		}
+
+
+	}
+
+}
+

@@ -38,3 +38,72 @@
 //   Goodbye!
 
 // YOUR CODE HERE
+#include<iostream>
+
+int main() {
+
+	// display the menu
+	std::cout << R"(
+=== Calculator ===
+1. Add
+2. Subtract
+3. Multiply
+4. Divide
+5. Quit
+	)" << std::endl;
+
+	int choice;
+	int result;
+
+	int num1;
+	int num2;
+
+
+	while (true) {
+		std::cout << "Choice: ";
+		std::cin >> choice;
+
+		if (choice == 5) {
+			break;
+		}
+
+		std::cout << "Enter two numbers: ";
+		std::cin >> num1 >> num2;
+		
+		switch (choice) {
+		case 1:
+			// Add
+			result = num1 + num2;
+			std::cout << "Result: " << result << std::endl;
+			break;
+		case 2:
+			// Sub
+			result = num1 - num2;
+			std::cout << "Result: " << result << std::endl;
+			break;
+		case 3:
+			// Mult
+			result = num1 * num2;
+			std::cout << "Result: " << result << std::endl;
+			break;
+		case 4:
+			// Divide
+			if (num2 == 0) {
+				std::cout << "Error: division by zero" << std::endl;
+			}
+			else {
+				result = num1 / num2;
+				std::cout << "Result: " << result << std::endl;
+			}
+			
+			break;
+		}
+
+	}
+
+
+
+
+
+}
+
