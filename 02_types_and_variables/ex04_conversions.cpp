@@ -22,3 +22,30 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex04 ex04_conversions.cpp
 
 // YOUR CODE HERE
+#include<iostream>
+
+
+int main() {
+
+
+	// Part A
+	int a = 3.14; // should truncate the decimal
+	double b = 42;
+	char c = 256;
+
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << c << " " << static_cast<int>(c) << std::endl;
+
+
+	// Part B
+	std::cout << 7/ 2 << std::endl;
+	std::cout << static_cast<double>(7)/ 2 << std::endl;
+
+	// Part C
+	//int x{3.14};   // should cause an error
+	
+
+
+
+}

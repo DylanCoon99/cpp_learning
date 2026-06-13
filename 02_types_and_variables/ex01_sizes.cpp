@@ -26,3 +26,30 @@
 //   size_t:    8 bytes
 
 // YOUR CODE HERE
+#include <iostream>
+#include <cstdint>
+
+
+
+int main() {
+
+
+	// char
+	std::cout << "char:      " << sizeof(char) << " bytes" << std::endl;
+	std::cout << "bool:      " << sizeof(bool) << " bytes" << std::endl;
+	std::cout << "short:     " << sizeof(short) << " bytes" << std::endl;
+	std::cout << "int:       " << sizeof(int) << " bytes" << std::endl;
+	std::cout << "long:      " << sizeof(long) << " bytes" << std::endl;
+	std::cout << "long long: " << sizeof(long long) << " bytes" << std::endl;
+	std::cout << "float:     " << sizeof(float) << " bytes" << std::endl;
+	std::cout << "double:    " << sizeof(double) << " bytes" << std::endl;
+	std::cout << "int8_t:    " << sizeof(int8_t) << " bytes" << std::endl;
+	std::cout << "int16_t:   " << sizeof(int16_t) << " bytes" << std::endl;
+	std::cout << "int32_t:   " << sizeof(int32_t) << " bytes" << std::endl;
+	std::cout << "int64_t:   " << sizeof(int64_t) << " bytes" << std::endl;
+	std::cout << "size_t:    " << sizeof(size_t) << " bytes" << std::endl;
+
+
+
+	// remember the return 0 is implicit
+}

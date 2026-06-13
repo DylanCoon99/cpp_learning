@@ -27,7 +27,41 @@
 //   Area of circle with radius 3: 28.27
 
 // YOUR CODE HERE
+#include<iostream>
+
 
 // Part C: Uncomment the next two lines to see the compiler error, then re-comment.
 // const int x = 10;
 // x = 20;
+
+
+
+
+
+// Part A
+constexpr double PI = 3.14159265358979;
+constexpr double circle_radius(double r){ return PI * r * r; }
+constexpr double area_5 = circle_radius(5.0);
+
+
+int main() {
+
+
+	std::cout << "Area of circle with radius 5.0: " << area_5 << std::endl;
+
+	double radius;
+	std::cout << "Enter a radius: ";
+	std::cin >> radius;
+	
+	std::cout << "Area of circle with radius " << radius << ": " << circle_radius(radius) << std::endl;
+
+
+
+
+
+
+	// Part B
+
+
+
+}

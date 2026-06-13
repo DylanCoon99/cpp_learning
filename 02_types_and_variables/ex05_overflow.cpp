@@ -20,3 +20,28 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex05 ex05_overflow.cpp
 
 // YOUR CODE HERE
+#include<climits>
+#include<iostream>
+
+
+int main() {
+
+	std::cout << "INT_MAX: " << INT_MAX << std::endl;
+	std::cout << "INT_MIN: " << INT_MIN << std::endl;
+
+	std::cout << "INT_MAX: " << INT_MAX + 1 << std::endl;
+	std::cout << "INT_MIN: " << INT_MIN - 1<< std::endl;
+
+	// When we add to the INT_MAX or subtract from INT_MIN -> integer overflow
+
+	std::cout << "INT_MAX: " << UINT_MAX << std::endl;
+
+	std::cout << "INT_MAX: " << UINT_MAX + 1 << std::endl;
+
+	// UINT_MAX rolls back to 0 because it's range is 0 —— 4294967295
+
+	
+
+
+
+}

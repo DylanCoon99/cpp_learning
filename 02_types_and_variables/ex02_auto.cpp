@@ -25,3 +25,25 @@
 // (Hint: PKc = pointer to const char. It's a C-string literal, same as in C.)
 
 // YOUR CODE HERE
+#include <iostream>
+
+
+int main() {
+
+
+	auto value1 = 42;      // should be an int
+	auto value2 = 3.14;    // should be a double
+	auto value3 = 3.14f;   // should be a float
+	auto value4 = true;    // should be a bool
+	auto value5 = 'A';     // should be a char
+	auto value6 = "hello"; // std::string ?? -> No it is char*, a P(ointer)K(onstant)c(har)
+
+	std::cout << value1 << " has type: " << typeid(value1).name() << std::endl;
+	std::cout << value2 << " has type: " << typeid(value2).name() << std::endl;
+	std::cout << value3 << " has type: " << typeid(value3).name() << std::endl;
+	std::cout << value4 << " has type: " << typeid(value4).name() << std::endl;
+	std::cout << value5 << " has type: " << typeid(value5).name() << std::endl;
+	std::cout << value6 << " has type: " << typeid(value6).name() << std::endl;
+
+
+}
