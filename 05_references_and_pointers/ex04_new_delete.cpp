@@ -45,3 +45,61 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex04 ex04_new_delete.cpp
 
 // YOUR CODE HERE
+#include <iostream>
+#include <cmath> 
+
+
+struct Point {
+    double x;
+    double y;
+};
+
+
+double distance(const Point* a, const Point* b) {
+	return std::sqrt(std::pow((a->y - b->y), 2) + std::pow((a->x - b->x), 2));
+}
+
+
+int main() {
+
+	// Part A
+	int* p = new int(42);
+	std::cout << "Value: " << *p << "   Address: " << p << std::endl;
+	delete p;
+
+	// Part B
+	int size;
+	std::cout << "Enter a size: " << std::endl;
+	std::cin >> size;
+
+	int* arr = new int[size];
+
+	for (int i = 0; i < size; ++i) {
+		arr[i] = (i+1)*(i+1);
+		std::cout << "Value: " << arr[i] << "   Address: " << &arr[i] << std::endl;
+	}
+
+	delete[] arr;
+
+	// Part C
+
+	Point *point = new Point;
+
+	point->x = 3.14;
+	point->y = 2.71;
+
+	Point *point2 = new Point;
+
+	point->x = 3.71;
+	point->y = 2.14;
+
+	double dist = distance(point, point2);
+
+	std::cout << "Distance between points: " << dist << std::endl;
+
+
+	// Part D
+	// The memory leak occurs when the program returns without deleting the memory that was allocated.
+	
+
+}

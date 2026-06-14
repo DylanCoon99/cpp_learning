@@ -38,3 +38,99 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex03 ex03_const_correctness.cpp
 
 // YOUR CODE HERE
+#include <iostream>
+#include <vector>
+
+
+void print_info(const std::vector<int>& v) {
+
+	std::cout << "Size: " << v.size() << std::endl;
+
+	for (int n: v) {
+		std::cout << n << " ";
+	}
+
+	std::cout << std::endl;
+
+}
+
+
+int sum(const std::vector<int>& v) {
+
+	int s = 0;
+
+	for (const int& n: v) {
+		s += n;
+	}
+
+	return s;
+}
+
+
+void zero_out(std::vector<int>& v) {
+
+	for (int& n: v) {
+		n = 0;
+	}
+
+}
+
+
+int count_char(const std::string& s, char c) {
+
+	int occurrences = 0;
+
+	for (const int& n: s) {
+		if (n == c) {
+			occurrences += 1;
+		}
+	}
+
+	return occurrences;
+
+}
+
+
+int main() {
+
+	/*
+	// Part A
+	int x = 42;
+	const int y = 99;
+	
+	// mutable pointer to an int
+	int* p1 = &x;
+
+	// mutable pointer to a constant int
+	const int* p2 = &y;
+
+	// constant pointer to a mutable int
+	int* const p3 = &x;
+
+	// constant pointer to a constant int
+	const int* const p4 = &y;
+	*/
+	
+
+	// Part B
+	std::vector<int> v = {1, 2, 3, 4, 5, 6};
+	std::vector<int> v2 = v;
+	std::cout << "Sum: " << sum(v) << std::endl;
+	print_info(v);
+
+	zero_out(v2);
+	print_info(v2);
+
+	const std::string s = "hello, world!";
+	std::cout << "Count: " << count_char(s, 'l') << std::endl;
+
+	// Part C
+	int x = 10;
+    const int& ref = x;
+    x = 20;
+    std::cout << ref << "\n";
+
+    // I think the value x will be changes on line 130 because x can still change. However, it cannot change via the reference ref
+
+
+}

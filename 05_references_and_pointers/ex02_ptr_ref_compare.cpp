@@ -31,3 +31,110 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex02 ex02_ptr_ref_compare.cpp
 
 // YOUR CODE HERE
+#include <iostream>
+
+
+void swap_ptr(int* a, int* b) {
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+
+void swap_ref(int& a, int& b) {
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+
+int* find_ptr(int* arr, int size, int target) {
+
+	int* ptr = nullptr;
+
+	for (int i = 0; i < size; ++i) {
+		if (arr[i] == target) {
+			return &arr[i];
+		}
+	}
+
+
+	return ptr;
+
+}
+
+
+
+int& find_ref(std::vector<int>& v, int target, bool& found) {
+
+	for (int& n: v) {
+		if (n == target) {
+			found = true;
+			return n;
+		}
+	}
+
+	return v[0];
+
+}
+
+
+void maybe_double(int* p) {
+
+	if (p != nullptr) {
+		*p *= 2;
+	}
+
+}
+
+
+int main() {
+
+	// Part A
+	int a = 5;
+	int b = 7;
+
+	swap_ptr(&a, &b);
+	std::cout << "a: " << a << std::endl;
+	std::cout << "b: " << b << std::endl;
+
+	// reset the values of a and b
+	a = 5;
+	b = 7;
+
+	int& r1 = a;
+	int& r2 = b;
+
+	swap_ref(a, b);
+	std::cout << "r1: " << r1 << std::endl;
+	std::cout << "r2: " << r2 << std::endl;
+
+	// Part B
+	int arr[5] = {2, 4, 6, 8, 10};
+	std::vector<int> v1 = {2, 4, 6, 8, 10};
+
+	bool found = false; 
+	int* ret1 = find_ptr(arr, 5, 8);
+	find_ref(v1, 8, found);
+
+	std::cout << "ret1: " << *ret1 << std::endl;
+	std::cout << "ret2: " << (found ? "found" : "not found") << std::endl;
+
+	// Part C
+
+	int n = 5;
+
+	maybe_double(&n);
+
+	std::cout << "n: " << n << std::endl;
+
+	int* np = nullptr;
+
+	maybe_double(np);
+
+	std::cout << "np: " << np << std::endl;
+
+
+
+
+}
