@@ -98,9 +98,9 @@ std::string trim(const std::string& s) {
 	result.erase(0, s.find_first_not_of(" \t\n\r"));
 
 	auto end = result.find_last_not_of(" \t\n\r");                                                                                                                                     
-	  if (end != std::string::npos) {                                                                                                                                                    
-	      result.erase(end + 1);                                                                                                                                                         
-	  }
+	if (end != std::string::npos) {                                                                                                                                                    
+	  result.erase(end + 1);                                                                                                                                                         
+	}
 
 
 	return result;
