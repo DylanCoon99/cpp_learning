@@ -41,3 +41,74 @@
 //     C++.
 
 // YOUR CODE HERE
+#include <iostream>
+#include <string>
+#include <sstream>
+
+
+int main() {
+
+	std::string line;
+	std::cout << "Enter a line of text and press enter: ";
+	std::getline(std::cin, line);
+
+	int total_chars = line.size();
+	int total_chars_minus_spaces = total_chars;
+	int num_words = 0;
+	int num_sentences = 0;
+	int num_vowels = 0;
+	std::vector<char> vowels = {'A', 'E', 'I', 'O', 'U'};
+
+
+	// num sentences: count '.', '!', '?'
+	for (const char& c: line) {
+		if (c == '.' || c == '!' || c == '?') {
+			num_sentences++;
+		}
+		else if (c ==  ' ') {
+			total_chars_minus_spaces--;
+		} else if (std::find(vowels.begin(), vowels.end(), std::toupper(c)) != vowels.end()) {
+			// if c is in vowels
+			num_vowels++;
+		}
+	}
+
+	// reverse the string: use the two pointer method
+	int end = line.length() - 1;
+	std::string reverse_str;
+
+	while (end >= 0) {
+		std::string c(1, line[end]);
+		reverse_str.append(c);
+		end--;
+	}
+
+
+	// print each word on it's own line (also count the words)
+	std::istringstream iss(line);
+    std::string word;
+    while (iss >> word) {
+        // process each word
+        num_words++;
+    }
+
+
+	// print the results
+	std::cout << "Total chars: " << total_chars << std::endl; 
+	std::cout << "Non-space chars: " << total_chars_minus_spaces << std::endl; 
+	std::cout << "Words: " << num_words << std::endl; 
+	std::cout << "Sentences: " << num_sentences << std::endl; 
+	std::cout << "Vowels: " << num_vowels << std::endl; 
+	std::cout << "Reversed: " << reverse_str << std::endl; 
+	std::cout << "Words: " << std::endl; 
+
+	
+	std::istringstream iss2(line);
+    while (iss2 >> word) {
+        // process each word
+    	std::cout << word << std::endl; 
+    }
+
+
+	
+}

@@ -53,3 +53,191 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex05 ex05_string_toolkit.cpp
 
 // YOUR CODE HERE
+#include <iostream>
+#include <ostream>
+#include <string>
+
+
+void print_info(const std::vector<std::string>& v) {
+
+	for (std::string n: v) {
+		std::cout << n << " ";
+	}
+
+	std::cout << std::endl;
+
+}
+
+
+std::string to_upper(const std::string& s) {
+	std::string res;
+
+	for (const char& c : s) {
+		res += std::toupper(c);
+	}
+
+	return res;
+}
+
+
+std::string to_lower(const std::string& s) {
+	std::string res;
+
+	for (const char& c : s) {
+		res += std::tolower(c);
+	}
+
+	return res;
+}
+
+
+std::string trim(const std::string& s) {
+
+	std::string result = s;
+
+	result.erase(0, s.find_first_not_of(" \t\n\r"));
+
+	auto end = result.find_last_not_of(" \t\n\r");                                                                                                                                     
+	  if (end != std::string::npos) {                                                                                                                                                    
+	      result.erase(end + 1);                                                                                                                                                         
+	  }
+
+
+	return result;
+
+}
+
+
+std::string repeat(const std::string& s, int n) {
+
+	std::string result = "";
+
+	for (int i = 0; i < n; ++i) {
+		result += s;
+	}
+
+	return result;
+}
+
+
+bool starts_with(const std::string& s, const std::string& prefix) {
+
+	if (s.substr(0, prefix.size()) == prefix) {
+		return true;
+	}
+
+	return false;
+
+}
+
+
+bool ends_with(const std::string& s, const std::string& suffix) {
+
+	if (s.length() < suffix.length()) {
+		return false;
+	}
+
+	if (s.substr(s.length() - suffix.length(), suffix.size()) == suffix) {
+		return true;
+	}
+
+	return false;
+
+
+}
+
+
+std::vector<std::string> split(const std::string& s, char delimiter) {
+
+
+	std::vector<std::string> result;
+
+	std::string word = "";
+
+	for (const char& c : s) {
+		// build the word
+		if (c == delimiter) {
+			if (word != "") {
+				result.push_back(word);
+				word = "";
+			} else {
+				continue;
+			}
+		} else {
+			word += c;
+		}
+
+	}
+	if (word != "") {
+		result.push_back(word);
+	}
+
+	return result;
+}
+
+
+std::string join(const std::vector<std::string>& parts, const std::string& sep) {
+
+	std::string result = "";
+
+	int size = static_cast<int>(parts.size());
+
+	for (int i = 0; i < size; ++i) {
+		if (i != size - 1) {
+			result += (parts[i] + sep);
+		} else {
+			result += parts[i];
+		}
+	}
+
+	return result;
+}
+
+
+std::string replace_all(const std::string& s,
+                           const std::string& from, const std::string& to) {
+	
+	int idx;
+
+	std::string result = s;
+
+	while (result.find(from) != std::string::npos) {
+		idx = result.find(from);
+		result.replace(idx, from.length(), to);
+	}
+
+	return result;
+}
+
+
+int main() {
+
+	std::string s = "dylan coon";
+	std::cout << to_upper(s) << std::endl;
+	std::cout << to_lower(to_upper(s)) << std::endl;
+
+	std::string test_trim = "    testing trim";
+	std::cout << trim(test_trim) << std::endl;
+
+
+	std::string words = "Here is a sentence.";
+	std::string lines = "Here\nis\na\ntest.";
+
+	print_info(split(words, ' '));
+	print_info(split(lines, '\n'));
+
+
+	std::vector<std::string> parts = {"This", "is", "a", "test", "123", "456"};
+	std::cout << join(parts, " ") << std::endl;
+	std::cout << join(parts, "*") << std::endl;
+
+	std::string test_replace = "abc def xyz abc";
+
+	std::cout << replace_all(test_replace, "abc", "123") << std::endl;
+
+
+
+
+
+
+}
