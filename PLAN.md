@@ -25,24 +25,24 @@
 16. `16_lambdas` — Captures, std::function, functional patterns
 - **P3_project** — TBD
 
-## Phase 4 — Intermediate Topics
-17. `17_error_handling` — Exceptions, noexcept, error codes vs exceptions
-18. `18_move_semantics_deep` — Rvalue refs, perfect forwarding, std::move
-19. `19_concurrency` — std::thread, mutexes, atomics, async/future
-20. `20_file_io` — Streams, binary I/O, filesystem library
+## Phase 4 — Build Systems & Testing
+17. `17_cmake` — CMakeLists.txt, targets, dependencies, multi-file projects
+18. `18_project_structure` — Headers/source separation, include guards, linking
+19. `19_unit_testing` — Google Test (gtest): test fixtures, assertions, mocking
+20. `20_integration_testing` — End-to-end tests, test organization, CI patterns
 - **P4_project** — TBD
 
-## Phase 5 — Advanced
-21. `21_template_metaprogramming` — SFINAE, constexpr if, type traits
-22. `22_design_patterns` — Factory, observer, strategy in idiomatic C++
-23. `23_memory_model` — Allocators, placement new, alignment
+## Phase 5 — Intermediate Topics
+21. `21_error_handling` — Exceptions, noexcept, error codes vs exceptions
+22. `22_move_semantics_deep` — Rvalue refs, perfect forwarding, std::move
+23. `23_concurrency` — std::thread, mutexes, atomics, async/future
+24. `24_file_io` — Streams, binary I/O, filesystem library
 - **P5_project** — TBD
 
-## Phase 6 — Build Systems & Testing
-24. `24_cmake` — CMakeLists.txt, targets, dependencies, multi-file projects
-25. `25_project_structure` — Headers/source separation, include guards, linking
-26. `26_unit_testing` — Google Test (gtest): test fixtures, assertions, mocking
-27. `27_integration_testing` — End-to-end tests, test organization, CI patterns
+## Phase 6 — Advanced
+25. `25_template_metaprogramming` — SFINAE, constexpr if, type traits
+26. `26_design_patterns` — Factory, observer, strategy in idiomatic C++
+27. `27_memory_model` — Allocators, placement new, alignment
 - **P6_project** — TBD
 
 ## Phase 7 — Networking
