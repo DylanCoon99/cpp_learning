@@ -51,3 +51,84 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex01 ex01_bank_account.cpp
 
 // YOUR CODE HERE
+#include <iostream>
+#include <string>
+
+
+class BankAccount {
+
+public:
+
+
+	// Constructors
+	BankAccount(const std::string& owner, double initial_balance) : owner_(owner), balance_(initial_balance), id_(next_id_++) {};
+	explicit BankAccount(const std::string& owner) : BankAccount(owner, 0.0) {};
+
+
+	const std::string& owner() const {
+		return owner_;
+	}
+
+	double balance() const {
+		return balance_;
+	}
+
+	int id() const {
+		return id_;
+	}
+
+
+	// Operations — all return *this for chaining
+	BankAccount& deposit(double amount) {
+		balance_ += amount;
+		return *this;
+	}
+
+
+	BankAccount& withdraw(double amount) {
+		if (amount < 0) {
+			std::cout << "Amount must be positive" << std::endl;
+		}
+		if (amount > balance_) {
+			std::cout << "Insufficient Funds." << std::endl;
+		} else {
+			balance_ -= amount;
+		}
+
+		return *this;
+	}
+
+
+	// Transfer from this account to another
+	BankAccount& transfer(BankAccount& to, double amount) {
+
+		withdraw(amount);
+		to.deposit(amount);
+		return *this;
+	}
+
+
+	void print() const {
+
+	}
+
+
+
+
+
+private:
+	static int next_id_;
+	int id_;
+	std::string owner_;
+	double balance_;
+
+};
+
+
+int BankAccount::next_id_ = 0;
+
+int main() {
+
+
+
+}

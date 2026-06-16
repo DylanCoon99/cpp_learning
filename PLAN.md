@@ -36,5 +36,24 @@
 21. `21_template_metaprogramming` — SFINAE, constexpr if, type traits
 22. `22_design_patterns` — Factory, observer, strategy in idiomatic C++
 23. `23_memory_model` — Allocators, placement new, alignment
-24. `24_build_systems` — CMake, linking, header/source organization
-25. `25_capstone_project` — A substantial project pulling it all together
+- **P5_project** — TBD
+
+## Phase 6 — Build Systems & Testing
+24. `24_cmake` — CMakeLists.txt, targets, dependencies, multi-file projects
+25. `25_project_structure` — Headers/source separation, include guards, linking
+26. `26_unit_testing` — Google Test (gtest): test fixtures, assertions, mocking
+27. `27_integration_testing` — End-to-end tests, test organization, CI patterns
+- **P6_project** — TBD
+
+## Phase 7 — Networking
+28. `28_sockets_basics` — POSIX sockets, TCP client/server, byte order
+29. `29_protocols` — HTTP parsing, custom protocols, serialization
+30. `30_async_networking` — Non-blocking I/O, select/poll/epoll, event loops
+- **P7_project** — TBD
+
+## Phase 8 — OS Internals
+31. `31_processes_and_threads` — fork, exec, pthreads, signals
+32. `32_memory_management` — Virtual memory, mmap, custom allocators
+33. `33_ipc` — Pipes, shared memory, message queues, Unix domain sockets
+34. `34_system_programming` — File descriptors, ioctl, /proc, syscalls
+- **P8_project** — Capstone project pulling everything together
