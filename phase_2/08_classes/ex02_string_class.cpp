@@ -53,3 +53,144 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex02 ex02_string_class.cpp
 
 // YOUR CODE HERE
+
+#include <iostream>
+#include <cstring>
+#include <stdexcept>
+
+
+class MyString {
+
+public:
+
+	MyString() {
+		data_ = new char[0];
+		length_ = 0;
+	}
+	
+	MyString(const char* str) {
+		length_ = strlen(str);
+		data_ = new char[length_];
+		strcpy(data_, str);
+	}
+
+	~MyString() {
+		delete data_;
+	}
+
+
+	// Getters
+	int length() const {
+		return length_;
+	}
+
+	const char* c_str() const {
+		return data_;
+	}
+
+	bool empty() const {
+		return length_ == 0;
+	}
+
+	char at(int index) const {
+		if (index >= length_ || index < 0) {
+			throw std::out_of_range("Index Out of Bounds.");
+		}
+		return data_[index];
+	}
+
+	// Modifiers
+	void append(const char* str) {
+		// need to delete old buffer and use new to create a new one
+		char* old_data = data_;
+
+		data_ = new char[length_ + strlen(str)];
+
+		// copy over existing data
+		strcpy(data_, old_data);
+		strcpy(data_ + strlen(old_data), str);
+		// update the length
+		length_ += strlen(str);
+
+	}
+
+
+	void clear() {
+		// string becomes empty string
+		delete data_;
+		data_ = new char[0];
+		length_ = 0;
+	}
+
+
+	// Utility
+	void print() const {
+		std::cout << data_ << std::endl;
+	}
+
+
+	int find(char c) const {
+		int idx = -1;
+
+		for (int i = 0; i < length_; ++i) {
+			if (data_[i] == c) {
+				idx = i;
+				break;
+			}
+		}
+
+		return idx;
+
+	}
+
+
+
+
+
+private:
+	char* data_;
+	int length_;
+
+};
+
+
+
+int main() {
+
+	MyString str1; // should create an empty string
+
+	str1.print();
+
+	std::cout << "str1 length(): " << str1.length() << std::endl;	
+
+	std::cout << "str1 empty(): " << (str1.empty() ? "true" : "false") << std::endl;
+
+	MyString str2("This is my string.");
+
+	str2.print();
+
+	std::cout << "str2 length(): " << str2.length() << std::endl;	
+
+	std::cout << "str2 empty(): " << (str2.empty() ? "true" : "false") << std::endl;
+
+	str2.append("123 the end");
+
+	str2.print();
+
+	std::cout << "str2 length(): " << str2.length() << std::endl;
+
+	std::cout << "str2.at(5): " << str2.at(5) << std::endl;
+
+	std::cout << "str2.find('T'): " << str2.find('T') << std::endl;
+
+	std::cout << "str2.find('Z'): " << str2.find('Z') << std::endl;
+
+	str2.clear();
+
+	str2.print();
+
+	std::cout << "str2 length(): " << str2.length() << std::endl;
+
+
+}
+
