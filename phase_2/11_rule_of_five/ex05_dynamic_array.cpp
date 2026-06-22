@@ -137,33 +137,22 @@ public:
 		return *this;
 	}
 
-	DynamicArray(DynamicArray&& other) noexcept {
-		// move constructor
-		size_ = other.size_;
-		capacity_ = other.capacity_;
-		data_ = new int[capacity_];
-		std::copy(other.data_, other.data_ + size_, data_);
-
-		// clean up the other array
-		other.size_ = 0;
-		other.capacity_ = 0;
-		delete[] other.data_;
-
-		other.data_ = nullptr;
-
-	}
+	DynamicArray(DynamicArray&& other) noexcept
+      : data_(other.data_), size_(other.size_), capacity_(other.capacity_) {
+      other.data_ = nullptr;
+      other.size_ = 0;
+      other.capacity_ = 0;
+  }
 
 	DynamicArray& operator=(DynamicArray&& other) noexcept {
 		// move assignment
 		size_ = other.size_;
 		capacity_ = other.capacity_;
-		data_ = new int[capacity_];
-		std::copy(other.data_, other.data_ + size_, data_);
+		data_ = other.data_;
 
 		// clean up the other array
 		other.size_ = 0;
 		other.capacity_ = 0;
-		delete[] other.data_;
 
 		other.data_ = nullptr;
 
