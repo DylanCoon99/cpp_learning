@@ -64,3 +64,93 @@
 // Compile: g++ -std=c++20 -Wall -Wextra -o ex04 ex04_resource_manager.cpp
 
 // YOUR CODE HERE
+#include <iostream>
+#include <map>
+#include <memory>
+
+
+class Texture {
+public:
+	explicit Texture(const std::string& filename)
+		: filename_(filename) {
+		std::cout << "Loading texture: " << filename_ << "\n";
+	}
+
+	~Texture() {
+		std::cout << "Unloading texture: " << filename_ << "\n";
+	}
+
+	void bind() const {
+		std::cout << "Binding texture: " << filename_ << "\n";
+	}
+
+	const std::string& filename() const { return filename_; }
+
+private:
+	std::string filename_;
+};
+
+
+class TextureCache {
+public:
+	/*
+	— If the texture is in the cache AND still alive, return it
+	— If not, load it, store a weak_ptr in the cache, return shared_ptr
+	— The cache uses weak_ptr so it doesn't keep textures alive
+	*/
+	std::shared_ptr<Texture> get(const std::string& filename) {
+		auto it = cache_.find(filename);
+		if (it != cache_.end()) {
+		    if (auto ptr = it->second.lock()) {
+		    	return ptr;
+		    }
+		}
+		std::cout << "Filename not found in cache." << std::endl;
+		auto texture = std::make_shared<Texture>(filename);
+		cache_[filename] = texture;
+
+		return texture;
+	}
+
+private:
+	std::map<std::string, std::weak_ptr<Texture>> cache_;
+	// (you'll need #include <map> — we'll cover it properly in step 14,
+	//  but it's just a key-value dictionary like Go's map or Python's dict)
+	// Usage: cache_[key] = value; auto it = cache_.find(key);
+};
+
+
+
+/*
+Review of smart pointers
+
+unique pointer
+	- only one unique pointer per resource
+	- cannot be copied
+	- ownership can be transferred with std::move()
+	- no overhead compared to raw pointer
+
+shared pointer
+	- can have multiple references
+		- mulitple pointers can co-own the same resource
+	- has an internal counter that increments when a new reference is
+	created and decrements when a reference is deleted
+
+
+*/
+
+
+int main() {
+
+
+	TextureCache cache;
+	{
+		auto t1 = cache.get("wall.png");     // loads
+		auto t2 = cache.get("wall.png");     // cache hit — same texture
+		auto t3 = cache.get("floor.png");    // loads new texture
+		t1->bind();
+		std::cout << "t1 use_count: " << t1.use_count() << "\n";  // 2
+	}   // t1, t2, t3 destroyed → textures unloaded
+
+	auto t4 = cache.get("wall.png");
+}
