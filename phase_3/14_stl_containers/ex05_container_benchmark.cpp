@@ -62,3 +62,220 @@
 // Note: -O2 enables optimization — important for meaningful benchmarks
 
 // YOUR CODE HERE
+#include <vector>
+#include <queue>
+#include <list>
+#include <set>
+#include <unordered_set>
+#include <random>
+#include <chrono>
+#include <iostream>
+#include <algorithm>
+
+
+int main() {
+
+
+	std::mt19937 gen(42);  // fixed seed for reproducibility
+	std::uniform_int_distribution<int> dist(1, 1000000);
+
+	{
+		// Part A — Insertion benchmark:
+
+		// vector
+		std::vector<int> v;
+		auto start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			v.push_back(dist(gen));
+		}
+
+		auto end = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "Vector Insertion at Back Time: " << duration.count() << " μs\n";
+
+
+		// queue
+		std::deque<int> q;
+		start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			q.push_back(dist(gen));
+		}
+
+		end = std::chrono::high_resolution_clock::now();
+		duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "Deque Insertion at Back Time: " << duration.count() << " μs\n";
+
+		
+		// list
+		std::list<int> l;
+		start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			l.push_back(dist(gen));
+		}
+
+		end = std::chrono::high_resolution_clock::now();
+		duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "List Insertion at Back Time: " << duration.count() << " μs\n";
+		std::cout << std::endl;
+	}
+
+	
+	{
+		// Part B — Lookup benchmark:
+	
+		// vector
+		std::vector<int> v;
+		for (int i = 0; i < 10000; ++i) {
+			v.push_back(dist(gen));
+		}
+		auto start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			std::find(v.begin(), v.end(), dist(gen));
+		}
+
+	
+		auto end = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "Vector Lookup Time: " << duration.count() << " μs\n";
+
+
+		// set
+		std::set<int> s;
+		for (int i = 0; i < 10000; ++i) {
+			s.insert(dist(gen));
+		}
+		start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			s.find(dist(gen));
+		}
+
+
+		end = std::chrono::high_resolution_clock::now();
+		duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "Set Lookup Time: " << duration.count() << " μs\n";
+
+	
+	
+		// unordered_set
+		std::unordered_set<int> unordered_s;
+		for (int i = 0; i < 10000; ++i) {
+			unordered_s.insert(dist(gen));
+		}
+		start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			s.find(dist(gen));
+		}
+
+	
+		end = std::chrono::high_resolution_clock::now();
+		duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "Unordered Set Lookup Time: " << duration.count() << " μs\n";
+		std::cout << std::endl;
+
+	}
+
+		{
+		// Part C — Insertion at front:
+
+		// vector
+		std::vector<int> v;
+		auto start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			v.insert(v.begin(), dist(gen));
+		}
+
+		auto end = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "Vector Insertion at Front Time: " << duration.count() << " μs\n";
+
+
+		// queue
+		std::deque<int> q;
+		start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			q.push_front(dist(gen));
+		}
+
+		end = std::chrono::high_resolution_clock::now();
+		duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "Deque Insertion at Front Time: " << duration.count() << " μs\n";
+
+		
+		// list
+		std::list<int> l;
+		start = std::chrono::high_resolution_clock::now();
+
+		for (int i = 0; i < 10000; ++i) {
+			l.push_front(dist(gen));
+		}
+
+		end = std::chrono::high_resolution_clock::now();
+		duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "List Insertion at Front Time: " << duration.count() << " μs\n";
+		std::cout << std::endl;
+	}
+
+	{
+		// Part D — Sorted iteration:
+
+		// vector
+		std::vector<int> v;
+		for (int i = 0; i < 10000; ++i) {
+			v.push_back(dist(gen));
+		}
+
+		auto start = std::chrono::high_resolution_clock::now();
+
+		// sort here
+		std::sort(v.begin(), v.end());
+
+
+		auto end_sort = std::chrono::high_resolution_clock::now();
+
+		volatile int sink = 0;
+		for (int x : v) {
+			sink = x;
+		}
+
+
+		auto end_iterate = std::chrono::high_resolution_clock::now();
+
+
+		auto duration_iterate = std::chrono::duration_cast<std::chrono::microseconds>(end_iterate - start);
+		auto duration_sort = std::chrono::duration_cast<std::chrono::microseconds>(end_sort - start);
+		std::cout << "Vector Sort Time: " << duration_sort.count() << " μs\n";
+		std::cout << "Vector Sort + Iteration Time: " << duration_iterate.count() << " μs\n";
+
+
+		// set
+		std::set<int> s;
+		for (int i = 0; i < 10000; ++i) {
+			s.insert(dist(gen));
+		}
+
+		start = std::chrono::high_resolution_clock::now();
+
+		for (int x : s) {
+			sink = x;
+		}
+
+
+		auto end = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		std::cout << "Set Iteration Time: " << duration.count() << " μs\n";
+
+
+	}
+
+
+
+
+}
