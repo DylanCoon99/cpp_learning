@@ -233,6 +233,114 @@ std::iota(v.begin(), v.end(), 1);   // {1, 2, 3, 4, 5}
 std::iota(v.begin(), v.end(), 10);  // {10, 11, 12, 13, 14}
 ```
 
+### 11. Writing Custom Iterators
+
+Any class can work with range-based for loops and STL algorithms if it provides `begin()` and `end()` methods that return iterator objects. Here's how to build one.
+
+**Step 1: Define the iterator as a nested class**
+
+The iterator lives inside your container class. It needs five type aliases (required by the STL) and a handful of operators:
+
+```cpp
+class MyContainer {
+public:
+    class Iterator {
+    public:
+        // Required type aliases — STL algorithms query these
+        using iterator_category = std::forward_iterator_tag;  // what kind of iterator
+        using value_type = int;              // what type it produces
+        using difference_type = std::ptrdiff_t;  // type for distances
+        using pointer = const int*;          // pointer to value
+        using reference = const int&;        // reference to value
+
+        // Constructor
+        Iterator(int value) : current_(value) {}
+
+        // Dereference — return the current value
+        int operator*() const { return current_; }
+
+        // Pre-increment — advance to next element, return *this
+        Iterator& operator++() {
+            ++current_;
+            return *this;
+        }
+
+        // Post-increment — save old state, advance, return old
+        Iterator operator++(int) {
+            Iterator old = *this;
+            ++current_;
+            return old;
+        }
+
+        // Equality — needed for the != end() check in for loops
+        bool operator==(const Iterator& other) const {
+            return current_ == other.current_;
+        }
+
+        bool operator!=(const Iterator& other) const {
+            return !(*this == other);
+        }
+
+    private:
+        int current_;
+    };
+
+    // begin() and end() return Iterator objects
+    Iterator begin() const { return Iterator(start_); }
+    Iterator end() const { return Iterator(end_); }
+
+private:
+    int start_, end_;
+};
+```
+
+**Step 2: How the compiler uses it**
+
+When you write:
+```cpp
+for (int x : MyContainer(0, 5)) {
+    std::cout << x << " ";
+}
+```
+
+The compiler transforms it into:
+```cpp
+MyContainer c(0, 5);
+auto it = c.begin();       // Iterator(0)
+auto end = c.end();        // Iterator(5)
+while (it != end) {        // calls operator!=
+    int x = *it;           // calls operator*
+    std::cout << x << " ";
+    ++it;                   // calls operator++
+}
+// Output: 0 1 2 3 4
+```
+
+**Step 3: STL compatibility**
+
+Once your class has `begin()` and `end()` returning proper iterators, STL algorithms just work:
+
+```cpp
+MyContainer c(1, 11);
+int sum = std::accumulate(c.begin(), c.end(), 0);           // 55
+int count = std::count_if(c.begin(), c.end(),
+    [](int x) { return x % 2 == 0; });                      // 5
+auto it = std::find(c.begin(), c.end(), 7);                  // finds 7
+std::vector<int> v(c.begin(), c.end());                      // copy to vector
+```
+
+The type aliases tell algorithms like `std::accumulate` what types to work with internally. Without them, some algorithms won't compile.
+
+**Iterator categories determine what algorithms you can use:**
+
+| Category | You implement | Algorithms available |
+|----------|--------------|---------------------|
+| Forward (`std::forward_iterator_tag`) | `*`, `++`, `==`, `!=` | find, count, accumulate, for_each |
+| Bidirectional (`std::bidirectional_iterator_tag`) | Forward + `--` | reverse, prev |
+| Random Access (`std::random_access_iterator_tag`) | Bidirectional + `+n`, `-n`, `[]`, `<` | sort, binary_search, nth_element |
+
+For most custom containers, forward iterators are sufficient.
+
 ---
 
 ## Exercises
