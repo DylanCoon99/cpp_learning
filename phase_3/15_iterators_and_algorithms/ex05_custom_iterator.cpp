@@ -32,35 +32,64 @@
 
 // YOUR CODE HERE
 #include <iterator>
+#include <iostream>
+#include <numeric>
+#include <vector>
 
 
 class Range {
 
 public:
-	using iterator_category = std::forward_iterator_tag;   // "I can go forward"
-	using value_type = int;                                // "I produce ints"                                                                                                     
-	using difference_type = std::ptrdiff_t;                // "distance between iterators"
-	using pointer = const int*;                            // "pointer to my values"                                                                                               
-	using reference = const int&;                          // "reference to my values"
 
-	Range(int start, int end, int step = 1) : start_(start), end_(end), step_(step) { }
+	Range(int start, int end, int step = 1) : start_(start), end_(end), step_(step) {}
+
+	class Iterator {
+    public:
+        // Required type aliases — STL algorithms query these
+        using iterator_category = std::forward_iterator_tag;  // what kind of iterator
+        using value_type = int;              // what type it produces
+        using difference_type = std::ptrdiff_t;  // type for distances
+        using pointer = const int*;          // pointer to value
+        using reference = const int&;        // reference to value
+
+        // Constructor
+        Iterator(int value, int step) : current_(value), step_(step) {}
+
+        // Dereference — return the current value
+        int operator*() const { return current_; }
+
+        // Pre-increment — advance to next element, return *this
+        Iterator& operator++() {
+            current_+=step_;
+            return *this;
+        }
+
+        // Post-increment — save old state, advance, return old
+        Iterator operator++(int) {
+            Iterator old = *this;
+            current_+=step_;
+            return old;
+        }
+
+        // Equality — needed for the != end() check in for loops
+        bool operator==(const Iterator& other) const {
+            return current_ == other.current_;
+        }
+
+        bool operator!=(const Iterator& other) const {
+			if (step_ > 0) return current_ < other.current_;                                                                                                                             
+			if (step_ < 0) return current_ > other.current_;                                                                                                                               
+			return false; 
+        }
+
+    private:
+        int current_;
+        int step_;
+    };
 
 
-	Range operator*(const Range& range) {
-
-	}
-
-	Range operator++(const int inc) {
-		
-	}
-
-	bool operator==(const Range& range) {
-		
-	}
-
-	bool operator!=(const Range& range) {
-		
-	}
+    Iterator begin() const { return Iterator(start_, step_); }
+    Iterator end() const { return Iterator(end_, step_); }
 
 
 
@@ -74,5 +103,30 @@ private:
 int main() {
 
 
+	for (int x : Range(0, 10)) {
+		std::cout << x << std::endl;
+	}
+	std::cout << std::endl;
+	for (int x : Range(0, 20, 3)) {
+		std::cout << x << std::endl;
+	}
+	std::cout << std::endl;
+	
+	for (int x : Range(10, 0, -1)) {
+		std::cout << x << std::endl;
+	}
 
+	Range r(1, 101);
+	std::cout << "Sum 1-101: " << std::accumulate(r.begin(), r.end(), 0) << std::endl;
+	
+	std::cout << "count_if for evens: " << std::count_if(r.begin(), r.end(), [](const int x) {return x % 2 == 0;}) << std::endl;
+
+
+	std::cout << "Find(42): " << *std::find(r.begin(), r.end(), 42) << std::endl;
+
+	std::vector<int> v(r.begin(), r.end());
+
+	for (int x : v) {
+		std::cout << x << std::endl;
+	}
 }
