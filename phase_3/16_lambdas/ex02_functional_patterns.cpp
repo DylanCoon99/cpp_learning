@@ -67,9 +67,84 @@
 #include <map>
 
 // YOUR CODE HERE
+class EventEmitter {
+public:
+    // Register a callback for a named event
+    void on(const std::string& event, std::function<void()> callback) {
+        handlers_[event].push_back(callback);
+    }
+    
+    // Register a callback that receives a string argument
+    void on(const std::string& event, std::function<void(const std::string&)> callback) {
+        data_handlers_[event].push_back(callback);
+    }
+
+    // Trigger all callbacks for an event
+    void emit(const std::string& event) {
+        for (auto &callback : handlers_[event]) {
+            callback();
+        }
+
+        for (auto &callback : once_handlers_[event]) {
+            callback();
+        }
+        // delete each callback in once_handlers
+        once_handlers_[event] = {};
+    }
+    void emit(const std::string& event, const std::string& data) {
+        for (auto &callback : data_handlers_[event]) {
+            callback(data);
+        }
+    }
+
+    // Remove all callbacks for an event
+    void off(const std::string& event) {
+        handlers_[event] = {};
+        data_handlers_[event] = {};
+        once_handlers_[event] = {};
+    }
+
+    // Register a callback that fires only once, then auto-removes
+    void once(const std::string& event, std::function<void()> callback) {
+        once_handlers_[event].push_back(callback);
+    }
+
+private:
+    std::map<std::string, std::vector<std::function<void()>>> handlers_;
+    std::map<std::string, std::vector<std::function<void()>>> once_handlers_;
+    std::map<std::string, std::vector<std::function<void(const std::string&)>>> data_handlers_;
+
+};
 
 int main() {
 
     // YOUR CODE HERE
+    EventEmitter emitter;
+    emitter.on("login", []() { std::cout << "User logged in\n"; });
+
+    int login_count = 0;
+    emitter.on("login", [&login_count]() {
+        ++login_count;
+        std::cout << "Login count: " << login_count << "\n";
+    });
+
+    emitter.on("message", [](const std::string& msg) {
+        std::cout << "Received: " << msg << "\n";
+    });
+
+    emitter.once("startup", []() { std::cout << "Starting up...\n"; });
+
+    // Trigger events
+    emitter.emit("login");          // both login handlers fire
+    emitter.emit("login");          // both fire again
+    emitter.emit("message", "hello world");
+    emitter.emit("startup");        // fires
+    emitter.emit("startup");        // does NOT fire (once)
+
+    emitter.off("login");
+    emitter.emit("login");          // nothing fires
 
 }
+
+
+

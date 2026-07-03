@@ -23,6 +23,15 @@ struct Movie {
     int runtime_min;
 };
 
+void print_movie(const Movie& movie) {
+    std::cout << "Title: " << movie.title << std::endl;
+    std::cout << "Year: " << movie.year << std::endl;
+    std::cout << "Rating: " << movie.rating << std::endl;
+    std::cout << "Genre: " << movie.genre << std::endl;
+    std::cout << "Runtime (mins): " << movie.runtime_min << std::endl;
+    std::cout << std::endl;
+}
+
 int main() {
 
     std::vector<Movie> movies = {
@@ -51,18 +60,99 @@ int main() {
     // Queries — use STL algorithms + lambdas for each. No raw loops.
     //
     // 1.  Find the highest-rated movie
+    Movie highest_rated = *std::max_element(movies.begin(), movies.end(), [](const Movie& a, const Movie& b) {
+        return a.rating < b.rating;
+    });
+    std::cout << "Highest Rated Movie: " << std::endl;
+    print_movie(highest_rated);
+    std::cout << std::endl;
     // 2.  Find all Sci-Fi movies (copy_if → new vector, print titles)
+    std::vector<Movie> scifi_movies;
+    std::copy_if(movies.begin(), movies.end(), std::back_inserter(scifi_movies), [](const Movie& movie) { return movie.genre == "Sci-Fi";});
+    for (auto &movie : scifi_movies) {
+        print_movie(movie);
+    }
+    std::cout << std::endl;
     // 3.  Sort by rating descending, print top 5
+    std::partial_sort(movies.begin(), movies.begin() + 5, movies.end(), [](const Movie& a, const Movie& b) { return a.rating > b.rating; });
+    for (auto it = movies.begin(); it != movies.begin() + 5; ++it) {
+        print_movie(*it);
+    }
+    std::cout << std::endl;
     // 4.  Average rating of all movies
+    double avg = std::accumulate(movies.begin(), movies.end(), 0.0, [](int acc, const Movie& movie) { return acc + movie.rating; }) / movies.size();
+    std::cout << "Average Rating: " << avg << std::endl;
     // 5.  Average runtime of movies rated above 8.7
+    int count_high_rated_movies = 0;
+    double avg_runtime = std::accumulate(movies.begin(), movies.end(), 0.0, [&count_high_rated_movies](int acc, const Movie& movie) { 
+        
+        if (movie.rating > 8.7) {
+            ++count_high_rated_movies;
+            return acc + movie.runtime_min;
+        }
+        return acc;
+    }) / count_high_rated_movies;
+
+    std::cout << "Avg_runtime: " << avg_runtime << "min" << std::endl;
+
     // 6.  Count movies per decade (1990s, 2000s, 2010s) — use count_if
+    int movies_1990s, movies_2000s, movies_2010s;
+
+    movies_1990s = count_if(movies.begin(), movies.end(), [](const Movie movie) {
+        return movie.year >= 1990 && movie.year < 2000;
+    });
+
+    movies_2000s = count_if(movies.begin(), movies.end(), [](const Movie movie) {
+        return movie.year >= 2000 && movie.year < 2010;
+    });
+
+    movies_2010s = count_if(movies.begin(), movies.end(), [](const Movie movie) {
+        return movie.year >= 2010 && movie.year < 2020;
+    });
+    
+    std::cout << std::endl;
+    std::cout << "1990s count: " << movies_1990s << std::endl;
+    std::cout << "2000s count: " << movies_2000s << std::endl;
+    std::cout << "2010s count: " << movies_2010s << std::endl;
+    std::cout << std::endl;
+
     // 7.  Find the longest movie
+    Movie longest_movie = *std::max_element(movies.begin(), movies.end(), [](const Movie& a, const Movie& b) {
+        return a.runtime_min < b.runtime_min;
+    });
+    std::cout << "Longest Runtime Movie: " << std::endl;
+    print_movie(longest_movie);
     // 8.  Check: are all movies rated above 7.0? (all_of)
+    bool over_7 = std::all_of(movies.begin(), movies.end(), [](const Movie& movie) { return movie.rating > 7.0; });
+    std::cout << "over 7.0: " << (over_7 ? "true" : "false") << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
     // 9.  Create a vector of just the titles of movies from the 1990s
     //     (filter by year, then transform to extract title)
+    std::cout << "Nineties Titles: " << std::endl;
+    std::vector<Movie> nineties;                                                                                                                                                       
+    std::copy_if(movies.begin(), movies.end(), std::back_inserter(nineties),                                                                                                           
+    [](const Movie& m) { return m.year >= 1990 && m.year < 2000; });                                                                                                               
+
+    std::vector<std::string> titles(nineties.size());                                                                                                                                
+    std::transform(nineties.begin(), nineties.end(), titles.begin(),                                                                                                                   
+      [](const Movie& m) { return m.title; });    
+    for (auto & title : titles) {
+        std::cout << title << std::endl;
+    }
+    std::cout << std::endl;
     // 10. Sort by genre, then by rating within genre (stable_sort twice,
     //     or single sort with compound comparator)
+    std::sort(movies.begin(), movies.end(), [](const Movie& a, const Movie& b) {
+        if (a.genre != b.genre) { 
+            return a.genre < b.genre;
+        }
+        return a.rating < b.rating;
+    });
 
-    // YOUR CODE HERE
+    for (auto &movie : movies) {
+        print_movie(movie);
+    }
+    std::cout << std::endl;
 
 }
