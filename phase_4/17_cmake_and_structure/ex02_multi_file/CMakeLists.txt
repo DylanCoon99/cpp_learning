@@ -19,3 +19,24 @@
 #   ./build/taskapp
 
 # YOUR CMAKE HERE
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+cmake_minimum_required(VERSION 3.20)
+project(taskapp LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Create an executable from source files
+add_library(tasklib
+    src/task.cpp
+)
+
+add_executable(taskapp
+    src/main.cpp
+)
+
+
+target_link_libraries(taskapp PUBLIC tasklib)
+target_include_directories(tasklib PUBLIC include)

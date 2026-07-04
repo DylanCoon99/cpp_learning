@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex02_multi_file/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex02_multi_file/include -std=gnu++20 -arch arm64 -o CMakeFiles/tasklib.dir/src/task.cpp.o -c /Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex02_multi_file/src/task.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex02_multi_file/src/task.cpp",
+  "output": "CMakeFiles/tasklib.dir/src/task.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex02_multi_file/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex02_multi_file/include -std=gnu++20 -arch arm64 -o CMakeFiles/taskapp.dir/src/main.cpp.o -c /Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex02_multi_file/src/main.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex02_multi_file/src/main.cpp",
+  "output": "CMakeFiles/taskapp.dir/src/main.cpp.o"
+}
+]

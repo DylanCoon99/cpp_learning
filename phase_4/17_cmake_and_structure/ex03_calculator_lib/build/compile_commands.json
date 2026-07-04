@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/include  -Wall -Wextra -std=gnu++20 -arch arm64 -o CMakeFiles/mathlib.dir/src/calc.cpp.o -c /Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/src/calc.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/src/calc.cpp",
+  "output": "CMakeFiles/mathlib.dir/src/calc.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/include  -Wall -Wextra -std=gnu++20 -arch arm64 -o CMakeFiles/mathlib.dir/src/stats.cpp.o -c /Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/src/stats.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/src/stats.cpp",
+  "output": "CMakeFiles/mathlib.dir/src/stats.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/include  -Wall -Wextra -std=gnu++20 -arch arm64 -o CMakeFiles/calculator.dir/app/main.cpp.o -c /Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/app/main.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_4/17_cmake_and_structure/ex03_calculator_lib/app/main.cpp",
+  "output": "CMakeFiles/calculator.dir/app/main.cpp.o"
+}
+]

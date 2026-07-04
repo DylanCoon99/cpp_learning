@@ -23,3 +23,34 @@
 #   ./build/calculator
 
 # YOUR CMAKE HERE
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+cmake_minimum_required(VERSION 3.20)
+project(CalculatorApp LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Set compiler flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+
+
+# library
+# Create an executable from source files
+add_library(mathlib
+    src/calc.cpp
+    src/stats.cpp
+)
+
+# binary executable
+add_executable(calculator
+	app/main.cpp
+)
+
+
+# link the libraries
+target_link_libraries(calculator PUBLIC mathlib)
+
+# include directories
+target_include_directories(mathlib PUBLIC include)
