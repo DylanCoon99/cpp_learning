@@ -28,30 +28,28 @@
 ## Phase 4 — Build Systems & Testing
 17. `17_cmake_and_structure` — CMake, multi-file projects, headers/sources, include guards, linking
 18. `18_testing` — Google Test setup with CMake, fixtures, assertions, mocking, test organization
-- **P4_project** — TBD
 
 ## Phase 5 — Intermediate Topics
 19. `19_error_handling` — Exceptions, noexcept, error codes vs exceptions
-20. `20_move_semantics_deep` — Rvalue refs, perfect forwarding, std::move
-21. `21_concurrency` — std::thread, mutexes, atomics, async/future
-22. `22_file_io` — Streams, binary I/O, filesystem library
+20. `20_concurrency` — std::thread, mutexes, atomics, async/future
+21. `21_file_io` — Streams, binary I/O, filesystem library
 - **P5_project** — TBD
 
 ## Phase 6 — Advanced
-23. `23_template_metaprogramming` — SFINAE, constexpr if, type traits
-24. `24_design_patterns` — Factory, observer, strategy in idiomatic C++
-25. `25_memory_model` — Allocators, placement new, alignment
+22. `22_template_metaprogramming` — SFINAE, constexpr if, type traits
+23. `23_design_patterns` — Factory, observer, strategy in idiomatic C++
+24. `24_memory_model` — Allocators, placement new, alignment
 - **P6_project** — TBD
 
 ## Phase 7 — Networking
-26. `26_sockets_basics` — POSIX sockets, TCP client/server, byte order
-27. `27_protocols` — HTTP parsing, custom protocols, serialization
-28. `28_async_networking` — Non-blocking I/O, select/poll/epoll, event loops
+25. `25_sockets_basics` — POSIX sockets, TCP client/server, byte order
+26. `26_protocols` — HTTP parsing, custom protocols, serialization
+27. `27_async_networking` — Non-blocking I/O, select/poll/epoll, event loops
 - **P7_project** — TBD
 
 ## Phase 8 — OS Internals
-29. `29_processes_and_threads` — fork, exec, pthreads, signals
-30. `30_memory_management` — Virtual memory, mmap, custom allocators
-31. `31_ipc` — Pipes, shared memory, message queues, Unix domain sockets
-32. `32_system_programming` — File descriptors, ioctl, /proc, syscalls
+28. `28_processes_and_threads` — fork, exec, pthreads, signals
+29. `29_memory_management` — Virtual memory, mmap, custom allocators
+30. `30_ipc` — Pipes, shared memory, message queues, Unix domain sockets
+31. `31_system_programming` — File descriptors, ioctl, /proc, syscalls
 - **P8_project** — Capstone project pulling everything together
