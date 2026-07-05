@@ -1,0 +1,5 @@
+if(EXISTS "/Users/Dylan/Documents/cpp/phase_4/18_testing/ex01_test_calculator/build/tests[1]_tests.cmake")
+  include("/Users/Dylan/Documents/cpp/phase_4/18_testing/ex01_test_calculator/build/tests[1]_tests.cmake")
+else()
+  add_test(tests_NOT_BUILT tests_NOT_BUILT)
+endif()
