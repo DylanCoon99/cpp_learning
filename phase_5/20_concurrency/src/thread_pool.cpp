@@ -41,17 +41,23 @@ ThreadPool::~ThreadPool() {
 
 void ThreadPool::worker_loop() {
 
-
-	// I want to test without wait to make sure I conceptually understand this
 	while (true) {
-		std::unique_lock<std::mutex> lock(mtx_); 
-		if (stop_ && tasks_.empty()) return;                                                                                                                                           
-		if (!tasks_.empty()) {
-			auto task = std::move(tasks_.front());                                                                                                                                     
-			tasks_.pop();                                                                                                                                                            
-			lock.unlock();                                                                                                    
-			task();                                                                                                                                                                  
-		}  
+		
+		std::function<void()> task;
+		{
+
+			// Anything that includes shared resources needs to be in the lock's scope
+			std::unique_lock<std::mutex> lock(mtx_);
+			cv_.wait(lock, [this]{ return stop_ || !tasks_.empty(); });  
+
+			if (stop_ && tasks_.empty()) return;
+
+			task = std::move(tasks_.front());                                                                                                                                     
+			tasks_.pop();
+		}
+		                                                                                                                                   
+		task();
+		
 	}
 
 }
