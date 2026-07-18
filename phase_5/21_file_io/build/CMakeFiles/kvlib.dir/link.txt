@@ -1,0 +1,2 @@
+/usr/bin/ar qc libkvlib.a CMakeFiles/kvlib.dir/src/kvstore.cpp.o
+/usr/bin/ranlib libkvlib.a

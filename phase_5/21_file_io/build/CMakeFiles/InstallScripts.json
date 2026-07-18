@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/Dylan/Documents/cpp/phase_5/21_file_io/build/cmake_install.cmake",
+		"/Users/Dylan/Documents/cpp/phase_5/21_file_io/build/_deps/googletest-build/cmake_install.cmake",
+		"/Users/Dylan/Documents/cpp/phase_5/21_file_io/build/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/Users/Dylan/Documents/cpp/phase_5/21_file_io/build/_deps/googletest-build/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
