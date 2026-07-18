@@ -16,6 +16,7 @@
 #include <sstream>
 #include <fstream>
 #include <algorithm>
+#include <cctype>
 
 // === PROVIDED — no error handling needed ===
 
@@ -80,23 +81,59 @@ void Config::set(const std::string& key, const std::string& value) {
 void Config::load_file(const std::string& filename) {
     // Open with std::ifstream. If it fails, throw ConfigError.
     // Otherwise read line by line, same pattern as load_string.
+    std::ifstream file(filename);
+
+    // Always verify if the file opened successfully
+    if (!file.is_open()) {
+        throw ConfigError("Failed to open: " + filename);
+    }
+    std::string line;
+    int line_number = 0;
+    while (std::getline(file, line)) {
+        ++line_number;
+        auto result = parse_line(line, line_number);
+        if (result) {
+            data_[result->first] = result->second;
+        }
+    }
+
 }
 
 std::string Config::get(const std::string& key) const {
     // Return value if found. Throw KeyNotFoundError if not.
+	try {
+        return data_.at(key); // at throws an error when key is not found
+    } catch (...) {
+    	throw KeyNotFoundError(key);
+    }
 }
 
 std::optional<std::string> Config::get_optional(const std::string& key) const {
     // Return the value wrapped in optional, or std::nullopt if missing.
+	try {
+        return std::make_optional<std::string>(data_.at(key));
+    } catch (...) {
+        return std::nullopt;  // no value
+    }
 }
 
 int Config::get_int(const std::string& key) const {
     // Get the string value (this may throw KeyNotFoundError — let it).
     // Convert with std::stoi. If conversion fails, throw TypeError.
+	try {
+        return std::stoi(get(key));
+    } catch (...) {
+    	throw TypeError(key, "int");
+    }
 }
 
 double Config::get_double(const std::string& key) const {
     // Same pattern as get_int but with std::stod.
+	try {
+        return std::stod(get(key));
+    } catch (...) {
+    	throw TypeError(key, "double");
+    }
 }
 
 bool Config::get_bool(const std::string& key) const {
@@ -104,25 +141,60 @@ bool Config::get_bool(const std::string& key) const {
     // Accept: "true", "yes", "1" → return true
     //         "false", "no", "0" → return false
     // Anything else → throw TypeError
+	std::string text = get(key);
+
+	std::transform(text.begin(), text.end(), text.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    if (text == "true" || text == "yes" || text == "1") {
+    	return true;
+    } else if (text == "false" || text == "no" || text == "0") {
+    	return false;
+    } else {
+    	throw TypeError(key, "boolean");
+    }
+
 }
 
 int Config::get_int_or(const std::string& key, int default_value) const {
     // Try get_int. If ANY exception is thrown, return default_value.
+	try {
+		return get_int(key);
+	} catch (...) {
+		return default_value;
+	}
 }
 
 double Config::get_double_or(const std::string& key, double default_value) const {
     // Try get_double. If ANY exception is thrown, return default_value.
+	try {
+		return get_double(key);
+	} catch (...) {
+		return default_value;
+	}
 }
 
 bool Config::get_bool_or(const std::string& key, bool default_value) const {
     // Try get_bool. If ANY exception is thrown, return default_value.
+	try {
+		return get_bool(key);
+	} catch (...) {
+		return default_value;
+	}
 }
 
 std::optional<std::pair<std::string, std::string>> Config::parse_line(const std::string& line, int line_number) {
-    // Trim the line.
-    // If empty or starts with '#', return std::nullopt.
-    // Find '='. If not found, throw ParseError with line_number.
-    // Split into key and value at '=', trim both.
-    // If key is empty, throw ParseError.
-    // Return {key, value}.
+    std::string trimmed = trim(line);
+    if (trimmed.empty() || trimmed[0] == '#') return std::nullopt;
+
+    auto pos = trimmed.find('=');
+    if (pos == std::string::npos) throw ParseError("missing '='", line_number);
+
+    std::string key = trim(trimmed.substr(0, pos));
+    std::string value = trim(trimmed.substr(pos + 1));
+
+    if (key.empty()) throw ParseError("empty key", line_number);
+
+    return std::make_pair(key, value);
 }

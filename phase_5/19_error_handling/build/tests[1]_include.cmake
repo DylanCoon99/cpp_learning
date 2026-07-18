@@ -1,0 +1,5 @@
+if(EXISTS "/Users/Dylan/Documents/cpp/phase_5/19_error_handling/build/tests[1]_tests.cmake")
+  include("/Users/Dylan/Documents/cpp/phase_5/19_error_handling/build/tests[1]_tests.cmake")
+else()
+  add_test(tests_NOT_BUILT tests_NOT_BUILT)
+endif()

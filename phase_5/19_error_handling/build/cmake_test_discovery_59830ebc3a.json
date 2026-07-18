@@ -1,0 +1,183 @@
+{
+  "tests": 33,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "ConfigParsing",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "ValidKeyValueParsed",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 33
+        },
+        {
+          "name": "CommentsSkipped",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 39
+        },
+        {
+          "name": "BlankLinesSkipped",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 45
+        },
+        {
+          "name": "WhitespaceTrimmed",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 51
+        },
+        {
+          "name": "NoEqualsThrowsParseError",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 57
+        },
+        {
+          "name": "EmptyKeyThrowsParseError",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 62
+        },
+        {
+          "name": "FileNotFoundThrows",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 67
+        }
+      ]
+    },
+    {
+      "name": "ConfigTest",
+      "tests": 26,
+      "testsuite": [
+        {
+          "name": "GetReturnsValue",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 74
+        },
+        {
+          "name": "GetThrowsOnMissingKey",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 79
+        },
+        {
+          "name": "GetOrReturnsValueIfExists",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 83
+        },
+        {
+          "name": "GetOrReturnsDefaultIfMissing",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 87
+        },
+        {
+          "name": "GetOptionalReturnsValueIfExists",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 91
+        },
+        {
+          "name": "GetOptionalReturnsNulloptIfMissing",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 97
+        },
+        {
+          "name": "HasReturnsTrueForExistingKey",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 102
+        },
+        {
+          "name": "HasReturnsFalseForMissingKey",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 106
+        },
+        {
+          "name": "GetIntParsesCorrectly",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 112
+        },
+        {
+          "name": "GetIntThrowsTypeErrorOnNonInt",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 117
+        },
+        {
+          "name": "GetIntOrReturnsValueIfValid",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 121
+        },
+        {
+          "name": "GetIntOrReturnsDefaultIfMissing",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 125
+        },
+        {
+          "name": "GetIntOrReturnsDefaultIfInvalid",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 129
+        },
+        {
+          "name": "GetDoubleParsesCorrectly",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 135
+        },
+        {
+          "name": "GetDoubleThrowsTypeErrorOnNonDouble",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 139
+        },
+        {
+          "name": "GetDoubleOrReturnsDefault",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 143
+        },
+        {
+          "name": "GetBoolParsesTrue",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 149
+        },
+        {
+          "name": "GetBoolParsesFalse",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 155
+        },
+        {
+          "name": "GetBoolThrowsTypeErrorOnInvalid",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 161
+        },
+        {
+          "name": "GetBoolOrReturnsDefault",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 165
+        },
+        {
+          "name": "KeysReturnsAllKeys",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 172
+        },
+        {
+          "name": "KeysWithPrefixFilters",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 177
+        },
+        {
+          "name": "KeysWithPrefixNoMatch",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 182
+        },
+        {
+          "name": "SetAddsNewKey",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 189
+        },
+        {
+          "name": "SetOverwritesExistingKey",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 194
+        },
+        {
+          "name": "SizeReturnsCorrectCount",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/19_error_handling\/tests\/test_config.cpp",
+          "line": 201
+        }
+      ]
+    }
+  ]
+}
