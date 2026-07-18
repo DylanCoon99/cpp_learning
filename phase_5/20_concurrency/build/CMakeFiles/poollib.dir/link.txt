@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpoollib.a CMakeFiles/poollib.dir/src/thread_pool.cpp.o
+/usr/bin/ranlib libpoollib.a

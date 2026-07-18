@@ -1,0 +1,44 @@
+[
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/20_concurrency/include -std=gnu++20 -arch arm64 -Wall -Wextra -o CMakeFiles/poollib.dir/src/thread_pool.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/20_concurrency/src/thread_pool.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/src/thread_pool.cpp",
+  "output": "CMakeFiles/poollib.dir/src/thread_pool.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/20_concurrency/include -std=gnu++20 -arch arm64 -o CMakeFiles/pool_app.dir/app/main.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/20_concurrency/app/main.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/app/main.cpp",
+  "output": "CMakeFiles/pool_app.dir/app/main.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/20_concurrency/include -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/include -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest -std=gnu++20 -arch arm64 -o CMakeFiles/tests.dir/tests/test_thread_pool.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/20_concurrency/tests/test_thread_pool.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/tests/test_thread_pool.cpp",
+  "output": "CMakeFiles/tests.dir/tests/test_thread_pool.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googlemock/include -I/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googlemock -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/include -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googlemock/include -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googlemock -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/include -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/include -I/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/include -isystem /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/20_concurrency/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+}
+]

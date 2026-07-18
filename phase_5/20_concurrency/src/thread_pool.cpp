@@ -22,3 +22,46 @@
 #include "thread_pool.h"
 
 // YOUR CODE HERE
+
+ThreadPool::ThreadPool(int num_threads) {
+	for (int i = 0; i < num_threads; ++i) {
+		workers_.emplace_back(std::thread(&ThreadPool::worker_loop, this));
+	}
+}
+
+
+ThreadPool::~ThreadPool() {
+	stop_ = true;
+	cv_.notify_all();
+	for (auto& thread : workers_) {
+		thread.join(); // wait for each thread to finish it's current task
+	}
+}
+
+
+void ThreadPool::worker_loop() {
+
+
+	// I want to test without wait to make sure I conceptually understand this
+	while (true) {
+		std::unique_lock<std::mutex> lock(mtx_); 
+		if (stop_ && tasks_.empty()) return;                                                                                                                                           
+		if (!tasks_.empty()) {
+			auto task = std::move(tasks_.front());                                                                                                                                     
+			tasks_.pop();                                                                                                                                                            
+			lock.unlock();                                                                                                    
+			task();                                                                                                                                                                  
+		}  
+	}
+
+}
+
+
+int ThreadPool::pending() const {
+	return tasks_.size();
+}
+
+
+int ThreadPool::num_workers() const {
+	return workers_.size();
+}
