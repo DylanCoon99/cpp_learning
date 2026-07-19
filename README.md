@@ -36,9 +36,7 @@
 - **P5_project** — TBD
 
 ## Phase 6 — Advanced
-22. `22_template_metaprogramming` — SFINAE, constexpr if, type traits
-23. `23_design_patterns` — Factory, observer, strategy in idiomatic C++
-24. `24_memory_model` — Allocators, placement new, alignment
+22. `22_design_patterns` — Factory, observer, strategy, CRTP, and other patterns in idiomatic C++
 - **P6_project** — TBD
 
 ## Phase 7 — Networking
