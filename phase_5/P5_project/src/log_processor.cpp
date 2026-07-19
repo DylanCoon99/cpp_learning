@@ -16,9 +16,11 @@
 //   - Return the stats
 //
 // process_files():
-//   - Submit each file as a task
-//   - Each task calls process_file internally
-//   - Merge results (or use a shared LogStats)
+//   - Read all files, collect all lines into one vector
+//   - Split into chunks, submit each chunk to the pool
+//   - One level of parallelism — all lines go through the same chunk pipeline
+//   - Use a shared LogStats (thread-safe via mutex)
+//   - Wait for all futures, return stats
 //
 // process_directory():
 //   - Use fs::directory_iterator to find .log files
@@ -45,19 +47,44 @@ LogStats LogProcessor::process_file(const fs::path& filepath, const LogFilter& f
 	//   - Wait for all futures
 	//   - Return the stats
 
+	
 
 }
 
 
 LogStats LogProcessor::process_files(const std::vector<fs::path>& files, const LogFilter& filter) {
 
-	// process_files():
-	//   - Submit each file as a task
-	//   - Each task calls process_file internally
-	//   - Merge results (or use a shared LogStats)
+	// 1. Read all lines from all files
+	std::vector<std::string> all_lines;
+	for (const auto& file : files) {
+		std::ifstream in(file);
+		if (!in) continue;
+		std::string line;
+		while (std::getline(in, line)) {
+			all_lines.push_back(std::move(line));
+		}
+	}
 
+	// 2. Split into chunks and submit to pool
+	LogStats stats;
+	const int chunk_size = 500;
+	std::vector<std::future<void>> futures;
 
+	for (int i = 0; i < static_cast<int>(all_lines.size()); i += chunk_size) {
+		int end = std::min(i + chunk_size, static_cast<int>(all_lines.size()));
+		std::vector<std::string> chunk(all_lines.begin() + i, all_lines.begin() + end);
 
+		futures.push_back(pool_.submit([this, chunk = std::move(chunk), &filter, &stats]() {
+			process_chunk(chunk, filter, stats);
+		}));
+	}
+
+	// 3. Wait for all tasks
+	for (auto& f : futures) {
+		f.get();
+	}
+
+	return stats;
 }
 
 

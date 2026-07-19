@@ -112,17 +112,18 @@ private:
 
 ## Implementation Strategy
 
-1. **Read**: Load file contents into memory (or read in chunks for large files)
-2. **Split**: Divide lines into chunks (e.g., 1000 lines per chunk)
+1. **Read**: Read all files, collect all lines into one vector
+2. **Split**: Divide lines into chunks (e.g., 500 lines per chunk)
 3. **Submit**: Each chunk is a task submitted to the thread pool
 4. **Process**: Each worker parses lines, applies filter, records to shared LogStats
 5. **Aggregate**: LogStats uses a mutex to safely merge results from all workers
 6. **Report**: Print summary statistics
 
+One level of parallelism — all lines from all files go into the same chunked work queue. The thread pool doesn't care which file a line came from.
+
 ## Features
 
-- **Parallel file processing** — multiple files processed concurrently
-- **Chunk-based processing** — large files split into work units
+- **Chunk-based parallelism** — all lines split into work units across the pool
 - **Configurable filtering** — builder pattern for composable filters
 - **Thread-safe aggregation** — mutex-protected statistics
 - **Error tolerance** — malformed lines are skipped (logged to stderr), don't crash
