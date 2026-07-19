@@ -46,7 +46,7 @@ std::optional<LogEntry> LogEntry::parse(const std::string& line) {
 		level,
 		source,
 		message
-	}
+	};
 
 
 	return std::make_optional<LogEntry>(logEntry);

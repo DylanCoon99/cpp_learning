@@ -1,0 +1,2 @@
+/usr/bin/ar qc libloglib.a CMakeFiles/loglib.dir/src/thread_pool.cpp.o CMakeFiles/loglib.dir/src/log_entry.cpp.o CMakeFiles/loglib.dir/src/log_filter.cpp.o CMakeFiles/loglib.dir/src/log_stats.cpp.o CMakeFiles/loglib.dir/src/log_processor.cpp.o
+/usr/bin/ranlib libloglib.a

@@ -49,29 +49,29 @@ int main() {
     std::cout << "\n=== Processing All Logs ===\n";
     LogProcessor processor(4);
     LogFilter no_filter;
-    LogStats stats = processor.process_directory(log_dir, no_filter);
-    stats.print_report();
+    auto stats = processor.process_directory(log_dir, no_filter);
+    stats->print_report();
 
     // Process with filter: only errors
     std::cout << "\n=== Errors Only ===\n";
     LogFilter error_filter;
     error_filter.level("ERROR");
-    LogStats error_stats = processor.process_directory(log_dir, error_filter);
-    error_stats.print_report();
+    auto error_stats = processor.process_directory(log_dir, error_filter);
+    error_stats->print_report();
 
     // Process with filter: db source, after a certain time
     std::cout << "\n=== DB logs after 12:00 ===\n";
     LogFilter db_filter;
     db_filter.source("db").after("2026-07-18 12:00:00");
-    LogStats db_stats = processor.process_directory(log_dir, db_filter);
-    db_stats.print_report();
+    auto db_stats = processor.process_directory(log_dir, db_filter);
+    db_stats->print_report();
 
     // Process with filter: messages containing "timeout"
     std::cout << "\n=== Timeout messages ===\n";
     LogFilter timeout_filter;
     timeout_filter.contains("timeout");
-    LogStats timeout_stats = processor.process_directory(log_dir, timeout_filter);
-    timeout_stats.print_report();
+    auto timeout_stats = processor.process_directory(log_dir, timeout_filter);
+    timeout_stats->print_report();
 
     // Cleanup
     fs::remove_all(log_dir);

@@ -1,0 +1,68 @@
+[
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/include -std=gnu++20 -arch arm64 -Wall -Wextra -o CMakeFiles/loglib.dir/src/thread_pool.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/src/thread_pool.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/src/thread_pool.cpp",
+  "output": "CMakeFiles/loglib.dir/src/thread_pool.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/include -std=gnu++20 -arch arm64 -Wall -Wextra -o CMakeFiles/loglib.dir/src/log_entry.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/src/log_entry.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/src/log_entry.cpp",
+  "output": "CMakeFiles/loglib.dir/src/log_entry.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/include -std=gnu++20 -arch arm64 -Wall -Wextra -o CMakeFiles/loglib.dir/src/log_filter.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/src/log_filter.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/src/log_filter.cpp",
+  "output": "CMakeFiles/loglib.dir/src/log_filter.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/include -std=gnu++20 -arch arm64 -Wall -Wextra -o CMakeFiles/loglib.dir/src/log_stats.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/src/log_stats.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/src/log_stats.cpp",
+  "output": "CMakeFiles/loglib.dir/src/log_stats.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/include -std=gnu++20 -arch arm64 -Wall -Wextra -o CMakeFiles/loglib.dir/src/log_processor.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/src/log_processor.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/src/log_processor.cpp",
+  "output": "CMakeFiles/loglib.dir/src/log_processor.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/include -std=gnu++20 -arch arm64 -o CMakeFiles/log_processor_app.dir/app/main.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/app/main.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/app/main.cpp",
+  "output": "CMakeFiles/log_processor_app.dir/app/main.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/include -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/include -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest -std=gnu++20 -arch arm64 -o CMakeFiles/tests.dir/tests/test_log.cpp.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/tests/test_log.cpp",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/tests/test_log.cpp",
+  "output": "CMakeFiles/tests.dir/tests/test_log.cpp.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googlemock/include -I/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googlemock -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/include -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googlemock/include -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googlemock -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/include -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -I/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/include -I/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/include -isystem /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1   -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/Users/Dylan/Documents/cpp/phase_5/P5_project/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+}
+]

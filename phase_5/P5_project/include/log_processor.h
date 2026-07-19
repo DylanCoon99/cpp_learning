@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 #include <filesystem>
 #include "log_stats.h"
 #include "log_filter.h"
@@ -11,11 +12,11 @@ namespace fs = std::filesystem;
 
 class LogProcessor {
 public:
-    explicit LogProcessor(int num_threads = 4);
+    explicit LogProcessor(int num_threads = 4) : pool_(num_threads) {};
 
-    LogStats process_file(const fs::path& filepath, const LogFilter& filter);
-    LogStats process_files(const std::vector<fs::path>& files, const LogFilter& filter);
-    LogStats process_directory(const fs::path& dir, const LogFilter& filter);
+    std::shared_ptr<LogStats> process_file(const fs::path& filepath, const LogFilter& filter);
+    std::shared_ptr<LogStats> process_files(const std::vector<fs::path>& files, const LogFilter& filter);
+    std::shared_ptr<LogStats> process_directory(const fs::path& dir, const LogFilter& filter);
 
 private:
     ThreadPool pool_;

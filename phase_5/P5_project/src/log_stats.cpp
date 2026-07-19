@@ -42,12 +42,12 @@ int LogStats::total() const {
 
 
 int LogStats::count_by_level(const std::string& level) const {
-	return level_counts_[level];
+	return level_counts_.at(level);
 }
 
 
 int LogStats::count_by_source(const std::string& source) const {
-	return source_counts_[source];
+	return source_counts_.at(source);
 }
 
 

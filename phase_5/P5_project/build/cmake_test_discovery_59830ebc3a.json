@@ -1,0 +1,95 @@
+{
+  "tests": 13,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "LogEntryTest",
+      "tests": 2,
+      "testsuite": [
+        {
+          "name": "ParseValidLine",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 10
+        },
+        {
+          "name": "ParseMalformedReturnsNullopt",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "name": "LogFilterTest",
+      "tests": 6,
+      "testsuite": [
+        {
+          "name": "EmptyFilterMatchesEverything",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 27
+        },
+        {
+          "name": "LevelFilter",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 33
+        },
+        {
+          "name": "SourceFilter",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 42
+        },
+        {
+          "name": "ContainsFilter",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 51
+        },
+        {
+          "name": "CombinedFilters",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 60
+        },
+        {
+          "name": "TimeFilters",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 71
+        }
+      ]
+    },
+    {
+      "name": "LogStatsTest",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "RecordAndCount",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 84
+        },
+        {
+          "name": "MostCommon",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 95
+        },
+        {
+          "name": "TopErrors",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 104
+        },
+        {
+          "name": "ThreadSafety",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 115
+        }
+      ]
+    },
+    {
+      "name": "LogProcessorTest",
+      "tests": 1,
+      "testsuite": [
+        {
+          "name": "ProcessFile",
+          "file": "\/Users\/Dylan\/Documents\/cpp\/phase_5\/P5_project\/tests\/test_log.cpp",
+          "line": 131
+        }
+      ]
+    }
+  ]
+}

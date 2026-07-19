@@ -31,28 +31,14 @@
 
 // YOUR CODE HERE
 
-explicit LogProcessor::LogProcessor(int num_threads = 4) {
-	// instantiate a thread pool
-	pool_ = ThreadPool(num_threads);
+
+
+std::shared_ptr<LogStats> LogProcessor::process_file(const fs::path& filepath, const LogFilter& filter) {
+	return process_files({filepath}, filter);
 }
 
 
-
-LogStats LogProcessor::process_file(const fs::path& filepath, const LogFilter& filter) {
-
-	// process_file():
-	//   - Open file, read all lines into a vector
-	//   - Split into chunks (e.g., 500 lines per chunk)
-	//   - Submit each chunk as a task to pool_
-	//   - Wait for all futures
-	//   - Return the stats
-
-	
-
-}
-
-
-LogStats LogProcessor::process_files(const std::vector<fs::path>& files, const LogFilter& filter) {
+std::shared_ptr<LogStats> LogProcessor::process_files(const std::vector<fs::path>& files, const LogFilter& filter) {
 
 	// 1. Read all lines from all files
 	std::vector<std::string> all_lines;
@@ -66,7 +52,7 @@ LogStats LogProcessor::process_files(const std::vector<fs::path>& files, const L
 	}
 
 	// 2. Split into chunks and submit to pool
-	LogStats stats;
+	auto stats = std::make_shared<LogStats>();
 	const int chunk_size = 500;
 	std::vector<std::future<void>> futures;
 
@@ -74,8 +60,8 @@ LogStats LogProcessor::process_files(const std::vector<fs::path>& files, const L
 		int end = std::min(i + chunk_size, static_cast<int>(all_lines.size()));
 		std::vector<std::string> chunk(all_lines.begin() + i, all_lines.begin() + end);
 
-		futures.push_back(pool_.submit([this, chunk = std::move(chunk), &filter, &stats]() {
-			process_chunk(chunk, filter, stats);
+		futures.push_back(pool_.submit([this, chunk = std::move(chunk), &filter, stats]() {
+			process_chunk(chunk, filter, *stats);
 		}));
 	}
 
@@ -88,7 +74,7 @@ LogStats LogProcessor::process_files(const std::vector<fs::path>& files, const L
 }
 
 
-LogStats LogProcessor::process_directory(const fs::path& dir, const LogFilter& filter) {
+std::shared_ptr<LogStats> LogProcessor::process_directory(const fs::path& dir, const LogFilter& filter) {
 
 	// process_directory():
 	//   - Use fs::directory_iterator to find .log files

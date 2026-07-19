@@ -142,11 +142,11 @@ TEST(LogProcessorTest, ProcessFile) {
 
     LogProcessor proc(2);
     LogFilter no_filter;
-    LogStats stats = proc.process_file(tmp, no_filter);
+    auto stats = proc.process_file(tmp, no_filter);
 
-    EXPECT_EQ(stats.total(), 4);  // malformed line skipped
-    EXPECT_EQ(stats.count_by_level("INFO"), 2);
-    EXPECT_EQ(stats.count_by_level("ERROR"), 1);
+    EXPECT_EQ(stats->total(), 4);  // malformed line skipped
+    EXPECT_EQ(stats->count_by_level("INFO"), 2);
+    EXPECT_EQ(stats->count_by_level("ERROR"), 1);
 
     fs::remove(tmp);
 }

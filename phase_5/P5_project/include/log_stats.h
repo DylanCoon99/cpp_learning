@@ -7,7 +7,7 @@
 #include <iostream>
 #include "log_entry.h"
 
-class  {
+class LogStats {
 public:
     void record(const LogEntry& entry);
 
